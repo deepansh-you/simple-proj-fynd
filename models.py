@@ -18,11 +18,12 @@ class Member(Base):
     name = Column(String, nullable = False)
     email = Column(String, nullable = False, unique = True)
     
-class Transactions(Base):
+class Transaction(Base):
     __tablename__ = 'transactions'
     id = Column(Integer, primary_key = True)
     book_id = Column(Integer, ForeignKey('books.id'), nullable = False)
     member_id = Column(Integer, ForeignKey('members.id'), nullable = False)
+    issue_date = Column(Date, nullable = False)
     return_date = Column(Date, nullable = True)
     
     book = relationship('Book')
